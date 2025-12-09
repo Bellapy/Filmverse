@@ -24,21 +24,19 @@ export const getTrendingMovies = async () => {
   }
 };
 
-export const getPopularMovies = async () => {
-    try {
-      const response = await api.get('/movie/popular');
-      return response.data.results;
-    } catch (error) {
-      console.error("Erro ao buscar filmes populares:", error);
-      return [];
-    }
-  };
-
-export const searchMovies = async (query) => {
+export const getPopularMovies = async (page = 1) => {
   try {
-    const response = await api.get('/search/movie', {
-      params: { query },
-    });
+    const response = await api.get('/movie/popular', { params: { page } });
+    return response.data.results;
+  } catch (error) {
+    console.error("Erro ao buscar filmes populares:", error);
+    return [];
+  }
+};
+
+export const searchMovies = async (query, page = 1) => {
+  try {
+    const response = await api.get('/search/movie', { params: { query, page } });
     return response.data.results;
   } catch (error) {
     console.error("Erro ao buscar filmes:", error);
@@ -57,15 +55,10 @@ export const getGenres = async () => {
 };
 
 // Busca filmes por gênero específico
-export const getMoviesByGenre = async (genreId, limit = 20) => {
+export const getMoviesByGenre = async (genreId, limit = 20, page = 1) => {
   try {
-    const response = await api.get('/discover/movie', {
-      params: { 
-        with_genres: genreId,
-        page: 1, // Traz sempre da primeira página
-      }
-    });
-    return response.data.results.slice(0, limit); // Corta a lista no limite desejado
+    const response = await api.get('/discover/movie', { params: { with_genres: genreId, page } });
+    return response.data.results.slice(0, limit);
   } catch (error) {
     console.error("Erro ao filtrar por gênero:", error);
     return [];
