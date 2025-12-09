@@ -57,12 +57,15 @@ export const getGenres = async () => {
 };
 
 // Busca filmes por gênero específico
-export const getMoviesByGenre = async (genreId) => {
+export const getMoviesByGenre = async (genreId, limit = 20) => {
   try {
     const response = await api.get('/discover/movie', {
-      params: { with_genres: genreId }
+      params: { 
+        with_genres: genreId,
+        page: 1, // Traz sempre da primeira página
+      }
     });
-    return response.data.results;
+    return response.data.results.slice(0, limit); // Corta a lista no limite desejado
   } catch (error) {
     console.error("Erro ao filtrar por gênero:", error);
     return [];

@@ -1,46 +1,51 @@
 import { useEffect, useState } from 'react';
 import { Search, Star } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { getPopularMovies, searchMovies, getGenres, getMoviesByGenre } from '../services/api';
+import toast from 'react-hot-toast';
 
 const Movies = () => {
+  const location = useLocation();
   const [movies, setMovies] = useState([]);
   const [genres, setGenres] = useState([]);
-  const [selectedGenre, setSelectedGenre] = useState(null); // Qual gênero está ativo
-  const [searchTerm, setSearchTerm] = useState(''); // O que foi digitado
+  const [selectedGenre, setSelectedGenre] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
 
-  // 1. Carregar Gêneros e Filmes Populares ao iniciar
   useEffect(() => {
     const loadInitialData = async () => {
+      setLoading(true);
       const genresData = await getGenres();
       setGenres(genresData);
-      
-      const moviesData = await getPopularMovies();
-      setMovies(moviesData);
+
+      if (location.state?.genreId) {
+        handleGenreClick(location.state.genreId);
+      } else {
+        const moviesData = await getPopularMovies();
+        setMovies(moviesData);
+      }
       setLoading(false);
     };
     loadInitialData();
-  }, []);
+  }, [location.state]); // Re-executa se o estado da rota mudar
 
-  // 2. Função de Pesquisa (Ao dar Enter ou clicar na lupa)
   const handleSearch = async (e) => {
-    e.preventDefault(); // Não recarrega a página
+    e.preventDefault();
     if (!searchTerm) return;
 
     setLoading(true);
-    setSelectedGenre(null); // Limpa o filtro de gênero se pesquisar nome
+    setSelectedGenre(null);
+    const toastId = toast.loading('Buscando filmes...');
     const results = await searchMovies(searchTerm);
     setMovies(results);
+    toast.dismiss(toastId);
     setLoading(false);
   };
 
-  // 3. Função de Filtrar por Gênero
   const handleGenreClick = async (genreId) => {
     setLoading(true);
-    setSearchTerm(''); // Limpa a pesquisa se clicar em gênero
+    setSearchTerm('');
     
-    // Se clicar no mesmo gênero, desmarca e volta para populares
     if (selectedGenre === genreId) {
       setSelectedGenre(null);
       const popular = await getPopularMovies();
@@ -55,8 +60,6 @@ const Movies = () => {
 
   return (
     <div className="min-h-screen bg-film-black pt-24 px-6 md:px-12 pb-10">
-      
-      {/* SEÇÃO 1: BARRA DE PESQUISA */}
       <div className="max-w-4xl mx-auto mb-10">
         <form onSubmit={handleSearch} className="relative flex items-center">
           <input 
@@ -73,24 +76,18 @@ const Movies = () => {
         </form>
       </div>
 
-      {/* SEÇÃO 2: FILTROS DE GÊNERO */}
       <div className="flex flex-wrap gap-3 justify-center mb-10">
         {genres.map((genre) => (
           <button
             key={genre.id}
             onClick={() => handleGenreClick(genre.id)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors border border-white/10
-              ${selectedGenre === genre.id 
-                ? 'bg-film-red text-white border-film-red' // Ativo
-                : 'bg-film-gray text-gray-300 hover:bg-white/10' // Inativo
-              }`}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors border border-white/10 ${selectedGenre === genre.id ? 'bg-film-red text-white border-film-red' : 'bg-film-gray text-gray-300 hover:bg-white/10'}`}
           >
             {genre.name}
           </button>
         ))}
       </div>
 
-      {/* SEÇÃO 3: GRID DE FILMES */}
       {loading ? (
         <p className="text-center text-white">Carregando catálogo...</p>
       ) : (
@@ -104,10 +101,8 @@ const Movies = () => {
                     alt={movie.title}
                     className="w-full h-[280px] object-cover"
                   />
-                  {/* Overlay escuro ao passar o mouse */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors"></div>
                 </div>
-
                 <div className="p-4">
                   <h3 className="text-white font-bold text-sm truncate group-hover:text-film-red transition-colors">{movie.title}</h3>
                   <div className="flex items-center gap-1 text-yellow-400 text-xs mt-2">
@@ -122,7 +117,6 @@ const Movies = () => {
           )}
         </div>
       )}
-
     </div>
   );
 };

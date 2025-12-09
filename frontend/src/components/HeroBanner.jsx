@@ -2,16 +2,17 @@ import { useEffect, useState } from 'react';
 import { Info, Plus, ChevronLeft, ChevronRight } from 'lucide-react';
 import { addFavorite } from '../services/backend';
 import { Link } from 'react-router-dom';
-import toast from 'react-hot-toast'; // Importação nova
+import toast from 'react-hot-toast';
 
 const HeroBanner = ({ movies }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     if (movies.length === 0) return;
+    // MUDANÇA: Rotação mais lenta (8 segundos)
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev === movies.length - 1 ? 0 : prev + 1));
-    }, 5000);
+      nextSlide();
+    }, 8000);
     return () => clearInterval(interval);
   }, [currentIndex, movies]);
 
@@ -26,9 +27,7 @@ const HeroBanner = ({ movies }) => {
   const handleAdd = async () => {
     const movie = movies[currentIndex];
     if (!movie) return;
-    
     const result = await addFavorite(movie);
-    // Substituição do alert() por toast()
     if (result.success) {
       toast.success(`${movie.title} adicionado à sua lista!`);
     } else {
@@ -55,11 +54,19 @@ const HeroBanner = ({ movies }) => {
           <p className="text-gray-300 text-sm md:text-lg line-clamp-2 max-w-2xl drop-shadow-md">
             {movie.overview}
           </p>
+
+          {/* MUDANÇA: Botões com novo design */}
           <div className="flex items-center gap-4 pt-4">
-            <button onClick={handleAdd} className="flex items-center gap-2 px-6 py-3 bg-film-red hover:bg-film-red-hover text-white rounded font-semibold transition-colors shadow-lg">
+            <button 
+              onClick={handleAdd} 
+              className="flex items-center gap-2 px-6 py-3 bg-film-red hover:bg-film-red-hover rounded font-semibold transition-all duration-300 shadow-lg shadow-red-500/20 hover:shadow-red-500/40 hover:scale-105"
+            >
               <Plus size={24} /> Minha Lista
             </button>
-            <Link to={`/movie/${movie.id}`} className="flex items-center gap-2 px-6 py-3 bg-gray-600/80 hover:bg-gray-600 text-white rounded font-semibold backdrop-blur-sm transition-colors">
+            <Link 
+              to={`/movie/${movie.id}`} 
+              className="flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded font-semibold backdrop-blur-sm border border-white/20 transition-colors"
+            >
               <Info size={24} /> Detalhes
             </Link>
           </div>
