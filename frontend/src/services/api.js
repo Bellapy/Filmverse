@@ -1,0 +1,88 @@
+import axios from 'axios';
+
+// Configuração base da API
+const apiKey = 'ad8bc863ebe88a73ca44e5595e8799f4'; 
+const baseUrl = 'https://api.themoviedb.org/3';
+
+
+const api = axios.create({
+  baseURL: baseUrl,
+  params: {
+    api_key: apiKey,
+    language: 'pt-BR', 
+  },
+});
+
+// Funções prontas para buscar os dados
+export const getTrendingMovies = async () => {
+  try {
+    const response = await api.get('/trending/movie/week');
+    return response.data.results;
+  } catch (error) {
+    console.error("Erro ao buscar filmes em alta:", error);
+    return [];
+  }
+};
+
+export const getPopularMovies = async () => {
+    try {
+      const response = await api.get('/movie/popular');
+      return response.data.results;
+    } catch (error) {
+      console.error("Erro ao buscar filmes populares:", error);
+      return [];
+    }
+  };
+
+export const searchMovies = async (query) => {
+  try {
+    const response = await api.get('/search/movie', {
+      params: { query },
+    });
+    return response.data.results;
+  } catch (error) {
+    console.error("Erro ao buscar filmes:", error);
+    return [];
+  }
+};
+
+export const getGenres = async () => {
+  try {
+    const response = await api.get('/genre/movie/list');
+    return response.data.genres;
+  } catch (error) {
+    console.error("Erro ao buscar gêneros:", error);
+    return [];
+  }
+};
+
+// Busca filmes por gênero específico
+export const getMoviesByGenre = async (genreId) => {
+  try {
+    const response = await api.get('/discover/movie', {
+      params: { with_genres: genreId }
+    });
+    return response.data.results;
+  } catch (error) {
+    console.error("Erro ao filtrar por gênero:", error);
+    return [];
+  }
+};
+
+export const getMovieDetails = async (id) => {
+  try {
+    const response = await api.get(`/movie/${id}`, {
+      params: {
+        append_to_response: 'videos', // Já traz os links do YouTube junto
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao buscar detalhes do filme:", error);
+    return null;
+  }
+
+  
+};
+
+export default api;
