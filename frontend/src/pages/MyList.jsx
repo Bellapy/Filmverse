@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getFavorites, removeFavorite, updateMovieStatus } from '../services/backend';
-import { Trash2, Star, Eye, EyeOff } from 'lucide-react'; // Ícones novos: Olho aberto/fechado
+import { Trash2, Star, Eye, EyeOff } from 'lucide-react';
+import toast from 'react-hot-toast'; // Importação principal
 
 const MyList = () => {
   const [movies, setMovies] = useState([]);
@@ -14,16 +15,59 @@ const MyList = () => {
     setLoading(false);
   };
 
-  const handleRemove = async (id) => {
-    if (confirm("Remover este filme?")) {
-      await removeFavorite(id);
+  // --- FUNÇÃO DE REMOÇÃO COM NOTIFICAÇÃO (SUBSTITUI O confirm()) ---
+  const handleRemove = (id, title) => {
+    toast((t) => (
+      <div className="flex flex-col gap-3">
+        <span className="font-bold">Remover "{title}" da sua lista?</span>
+        <div className="flex gap-2">
+          <button
+            onClick={() => {
+              executeRemoval(id); // Chama a função que realmente apaga
+              toast.dismiss(t.id); // Fecha a notificação
+            }}
+            className="w-full bg-film-red text-white px-3 py-1 rounded text-sm font-semibold"
+          >
+            Confirmar
+          </button>
+          <button
+            onClick={() => toast.dismiss(t.id)}
+            className="w-full bg-gray-500 text-white px-3 py-1 rounded text-sm font-semibold"
+          >
+            Cancelar
+          </button>
+        </div>
+      </div>
+    ), {
+      duration: 6000, // A notificação fica mais tempo na tela
+    });
+  };
+
+  // Função auxiliar para executar a remoção
+  const executeRemoval = async (id) => {
+    const success = await removeFavorite(id);
+    if (success) {
+      toast.success("Filme removido!");
       carregarLista();
+    } else {
+      toast.error("Não foi possível remover o filme.");
     }
   };
 
+
+  // --- FUNÇÃO DE STATUS COM NOTIFICAÇÃO ---
   const handleToggleWatched = async (id) => {
-    await updateMovieStatus(id);
-    carregarLista();
+    const movie = movies.find(m => m._id === id); // Encontra o filme antes de mudar
+    if (!movie) return;
+
+    const success = await updateMovieStatus(id);
+    if (success) {
+      // Mostra uma mensagem específica baseada na ação
+      toast.success(movie.watched ? 'Marcado como "Não Visto"' : 'Marcado como "Visto"!');
+      carregarLista();
+    } else {
+      toast.error("Erro ao atualizar o status.");
+    }
   };
 
   return (
@@ -38,56 +82,41 @@ const MyList = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
           {movies.map((movie) => (
             <div key={movie._id} className="relative group bg-film-gray rounded-lg overflow-hidden hover:scale-105 transition-transform border border-white/5 shadow-lg">
-              
-              {/* Imagem (Sempre colorida) */}
               <div className="relative">
                 <img 
                   src={`https://image.tmdb.org/t/p/w500${movie.posterPath}`} 
                   alt={movie.title}
                   className="w-full h-[250px] object-cover"
                 />
-                
-                {/* ETIQUETA 'ASSISTIDO' VISÍVEL */}
                 {movie.watched && (
                   <div className="absolute top-2 left-2 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded shadow-md uppercase tracking-wider">
                     Assistido
                   </div>
                 )}
               </div>
-
               <div className="p-4">
                 <h3 className="text-white font-bold text-sm truncate">{movie.title}</h3>
-                
                 <div className="flex items-center justify-between mt-3">
                   <div className="flex items-center gap-1 text-yellow-400 text-xs">
                     <Star size={12} fill="currentColor" />
                     {movie.voteAverage?.toFixed(1)}
                   </div>
-
-                  {/* BOTÃO DE STATUS (Muito mais intuitivo) */}
                   <button 
                     onClick={() => handleToggleWatched(movie._id)}
-                    className={`flex items-center gap-1 px-2 py-1 rounded text-xs font-bold transition-colors
-                      ${movie.watched 
-                        ? 'bg-green-500/20 text-green-400 border border-green-500/50 hover:bg-green-500/30' 
-                        : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-                      }`}
+                    className={`flex items-center gap-1 px-2 py-1 rounded text-xs font-bold transition-colors ${movie.watched ? 'bg-green-500/20 text-green-400 border border-green-500/50 hover:bg-green-500/30' : 'bg-gray-700 text-gray-300 hover:bg-gray-600'}`}
                   >
                     {movie.watched ? <Eye size={14} /> : <EyeOff size={14} />}
                     {movie.watched ? "Visto" : "Não vi"}
                   </button>
                 </div>
               </div>
-
-              {/* Botão Remover (Discreto no topo) */}
               <button 
-                onClick={() => handleRemove(movie._id)}
+                onClick={() => handleRemove(movie._id, movie.title)}
                 className="absolute top-2 right-2 p-1.5 bg-black/60 text-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600 hover:text-white"
                 title="Remover"
               >
                 <Trash2 size={16} />
               </button>
-
             </div>
           ))}
         </div>
