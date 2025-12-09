@@ -73,7 +73,7 @@ export const getMovieDetails = async (id) => {
   try {
     const response = await api.get(`/movie/${id}`, {
       params: {
-        append_to_response: 'videos', // Já traz os links do YouTube junto
+        append_to_response: 'videos,credits,recommendations',
       },
     });
     return response.data;
