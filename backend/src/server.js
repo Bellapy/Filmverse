@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors'); // <--- Importante
+const cors = require('cors'); 
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -9,10 +9,9 @@ const movieRoutes = require('./routes/movieRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// --- CORREÇÃO DO CORS AQUI ---
-// Libera o acesso para qualquer origem (Frontend)
+
 app.use(cors()); 
-app.use(express.json()); // Permite receber JSON
+app.use(express.json()); 
 
 // Conecta ao Banco
 const connectDB = async () => {

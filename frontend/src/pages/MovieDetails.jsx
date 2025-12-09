@@ -5,7 +5,7 @@ import { addFavorite } from '../services/backend';
 import { Star, Calendar, Clock, Play, Plus, X } from 'lucide-react';
 import MovieRow from '../components/MovieRow';
 import CastMember from '../components/CastMember';
-import toast from 'react-hot-toast'; // Importação nova
+import toast from 'react-hot-toast'; 
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -27,7 +27,7 @@ const MovieDetails = () => {
   const handleAdd = async () => {
     if (!movie) return;
     const result = await addFavorite(movie);
-    // Substituição do alert() por toast()
+    
     if (result.success) {
       toast.success(`${movie.title} adicionado à sua lista!`);
     } else {

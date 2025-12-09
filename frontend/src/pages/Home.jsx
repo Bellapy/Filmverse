@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getTrendingMovies, getMoviesByGenre } from '../services/api'; // Importa a função nova
+import { getTrendingMovies, getMoviesByGenre } from '../services/api'; 
 import { Link } from 'react-router-dom';
 import HeroBanner from '../components/HeroBanner';
 import MovieRow from '../components/MovieRow';
@@ -7,7 +7,7 @@ import MovieRow from '../components/MovieRow';
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [popularMovies, setPopularMovies] = useState([]);
-  const [genreImages, setGenreImages] = useState({}); // Novo estado para as imagens
+  const [genreImages, setGenreImages] = useState({}); 
   const [loading, setLoading] = useState(true);
 
   const genresToDisplay = [
@@ -29,7 +29,7 @@ const Home = () => {
         // Busca a imagem de capa para cada gênero
         const images = {};
         for (const genre of genresToDisplay) {
-          const movies = await getMoviesByGenre(genre.id, 1); // Pede só 1 filme
+          const movies = await getMoviesByGenre(genre.id, 1); 
           if (movies.length > 0) {
             images[genre.id] = `https://image.tmdb.org/t/p/w500${movies[0].backdrop_path}`;
           }
@@ -55,8 +55,8 @@ const Home = () => {
       <div className="relative z-10 mt-4 pb-10">
         <MovieRow title="Filmes do Momento" movies={trendingMovies} />
         
-        {/* Seção de Gêneros (Agora com espaçamento corrigido) */}
-        <div className="px-6 md:px-12 mt-12 mb-12"> {/* ADICIONADO mb-12 para dar espaço embaixo */}
+       
+        <div className="px-6 md:px-12 mt-12 mb-12"> 
           <h2 className="text-xl md:text-2xl font-bold text-white mb-4 border-l-4 border-film-red pl-4">
             Explore por Gênero
           </h2>

@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 
-// Componentes e Páginas
+
 import Navbar from './components/Navbar';
 import Footer from './components/footer';
 import Home from './pages/Home';

@@ -8,8 +8,8 @@ const MyList = () => {
   const [loading, setLoading] = useState(true);
   
   // Novos estados para controlar a UI
-  const [filter, setFilter] = useState('all'); // 'all', 'watched', 'unwatched'
-  const [viewMode, setViewMode] = useState('grid'); // 'grid', 'list'
+  const [filter, setFilter] = useState('all');
+  const [viewMode, setViewMode] = useState('grid'); 
 
   useEffect(() => {
     loadList();
@@ -22,8 +22,7 @@ const MyList = () => {
     setLoading(false);
   };
 
-  // --- LÓGICA DE FILTRAGEM ---
-  // useMemo evita que a lista seja recalculada a cada renderização
+  
   const filteredMovies = useMemo(() => {
     if (filter === 'watched') {
       return allMovies.filter(movie => movie.watched);
@@ -69,19 +68,19 @@ const MyList = () => {
   return (
     <div className="min-h-screen bg-film-black pt-24 px-6 md:px-12 pb-10 animate-fade-in">
       
-      {/* --- CABEÇALHO COM FILTROS E MODO DE VISUALIZAÇÃO --- */}
+   
       <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
         <h1 className="text-3xl font-heading font-bold text-white border-l-4 border-film-red pl-4">Minha Lista</h1>
         
         <div className="flex items-center gap-2 md:gap-4 p-1 bg-film-gray rounded-full border border-white/10">
-          {/* Filtros */}
+         
           <button onClick={() => setFilter('all')} className={`px-4 py-1.5 text-sm rounded-full transition-colors ${filter === 'all' ? 'bg-film-red text-white' : 'text-gray-400 hover:text-white'}`}>Todos</button>
           <button onClick={() => setFilter('watched')} className={`px-4 py-1.5 text-sm rounded-full transition-colors ${filter === 'watched' ? 'bg-film-red text-white' : 'text-gray-400 hover:text-white'}`}>Assistidos</button>
           <button onClick={() => setFilter('unwatched')} className={`px-4 py-1.5 text-sm rounded-full transition-colors ${filter === 'unwatched' ? 'bg-film-red text-white' : 'text-gray-400 hover:text-white'}`}>Não Vistos</button>
           
           <div className="h-6 w-px bg-white/10 mx-2"></div>
 
-          {/* Modo de Visualização */}
+          
           <button onClick={() => setViewMode('grid')} className={`p-2 rounded-full transition-colors ${viewMode === 'grid' ? 'bg-film-red text-white' : 'text-gray-400 hover:text-white'}`}><LayoutGrid size={18} /></button>
           <button onClick={() => setViewMode('list')} className={`p-2 rounded-full transition-colors ${viewMode === 'list' ? 'bg-film-red text-white' : 'text-gray-400 hover:text-white'}`}><List size={18} /></button>
         </div>
@@ -93,11 +92,11 @@ const MyList = () => {
             <p className="text-gray-400 text-center mt-10">Nenhum filme encontrado para este filtro.</p>
           ) : (
             <>
-              {/* --- VISUALIZAÇÃO EM GRID --- */}
+             
               {viewMode === 'grid' && (
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
                   {filteredMovies.map((movie) => (
-                    // O Card de Grid que já tínhamos (com pequenas melhorias)
+                    
                     <div key={movie._id} className="relative group bg-film-gray rounded-lg overflow-hidden hover:scale-105 transition-transform border border-white/5 shadow-lg">
                       <div className="relative">
                         <img src={`https://image.tmdb.org/t/p/w500${movie.posterPath}`} alt={movie.title} className="w-full h-[250px] object-cover" />
@@ -116,7 +115,7 @@ const MyList = () => {
                 </div>
               )}
 
-              {/* --- VISUALIZAÇÃO EM LISTA --- */}
+             
               {viewMode === 'list' && (
                 <div className="space-y-4">
                   {filteredMovies.map((movie) => (

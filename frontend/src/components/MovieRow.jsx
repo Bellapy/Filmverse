@@ -1,7 +1,7 @@
 import { Star, Plus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { addFavorite } from '../services/backend';
-import toast from 'react-hot-toast'; // Importação nova
+import toast from 'react-hot-toast'; 
 
 const MovieRow = ({ title, movies, size = 'md' }) => {
   const sizeClasses = {

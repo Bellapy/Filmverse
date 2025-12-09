@@ -11,7 +11,7 @@ const Movies = () => {
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true); // Indica se há mais páginas para carregar
+  const [hasMore, setHasMore] = useState(true); 
   const [loading, setLoading] = useState(true);
 
   const observer = useRef();
@@ -23,20 +23,20 @@ const Movies = () => {
     
     observer.current = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting && hasMore) {
-        setPage(prevPage => prevPage + 1); // Carrega a próxima página
+        setPage(prevPage => prevPage + 1); 
       }
     });
 
     if (node) observer.current.observe(node);
   }, [loading, hasMore]);
 
-  // Efeito para buscar filmes quando a página, gênero ou busca mudam
+
   useEffect(() => {
     const loadMovies = async () => {
       setLoading(true);
       let newMovies = [];
       
-      // Define qual função da API usar
+    
       if (searchTerm) {
         newMovies = await searchMovies(searchTerm, page);
       } else if (selectedGenre) {
@@ -46,7 +46,7 @@ const Movies = () => {
       }
       
       setMovies(prevMovies => {
-        // Evita duplicados
+      
         const allMovies = [...prevMovies, ...newMovies];
         const uniqueMovies = Array.from(new Set(allMovies.map(a => a.id))).map(id => allMovies.find(a => a.id === id));
         return uniqueMovies;
@@ -59,7 +59,6 @@ const Movies = () => {
     loadMovies();
   }, [page, selectedGenre, searchTerm]);
 
-  // Efeito para carregar os gêneros (apenas uma vez)
   useEffect(() => {
     const loadGenres = async () => {
       const genresData = await getGenres();
@@ -71,7 +70,6 @@ const Movies = () => {
     loadGenres();
   }, [location.state]);
 
-  // Função para resetar a lista ao fazer uma nova busca ou filtro
   const resetAndLoad = (loader) => {
     setPage(1);
     setMovies([]);
@@ -83,7 +81,7 @@ const Movies = () => {
     if (!searchTerm) return;
     resetAndLoad(() => {
       setSelectedGenre(null);
-      // O useEffect já vai disparar a busca com o novo searchTerm
+
     });
   };
 
@@ -113,7 +111,7 @@ const Movies = () => {
       
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
         {movies.map((movie, index) => {
-          // Se for o último filme da lista, adiciona a referência para o observador
+        
           if (movies.length === index + 1) {
             return (
               <div ref={lastMovieElementRef} key={movie.id} className="group bg-film-gray rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300">

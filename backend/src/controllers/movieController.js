@@ -49,7 +49,7 @@ exports.deleteMovie = async (req, res) => {
   }
 };
 
-// 4. ATUALIZAR (O NOVO)
+// 4. ATUALIZAR 
 exports.updateMovie = async (req, res) => {
   try {
     const movie = await Movie.findById(req.params.id);

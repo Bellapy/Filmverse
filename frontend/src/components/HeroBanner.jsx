@@ -55,7 +55,7 @@ const HeroBanner = ({ movies }) => {
             {movie.overview}
           </p>
 
-          {/* MUDANÇA: Botões com novo design */}
+          
           <div className="flex items-center gap-4 pt-4">
             <button 
               onClick={handleAdd} 

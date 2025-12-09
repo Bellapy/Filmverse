@@ -5,7 +5,7 @@ const movieSchema = new mongoose.Schema({
   tmdbId: {
     type: String,
     required: true,
-    unique: true, // Não deixa salvar o mesmo filme duas vezes
+    unique: true, 
   },
   title: {
     type: String,
@@ -20,7 +20,7 @@ const movieSchema = new mongoose.Schema({
   overview: {
     type: String,
   },
-  // Campo extra para suas anotações pessoais (Item 3.2 do PDF)
+
   personalRating: {
     type: Number,
     default: 0

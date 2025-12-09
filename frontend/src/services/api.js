@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Configuração base da API
-const apiKey = 'ad8bc863ebe88a73ca44e5595e8799f4'; 
+const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 const baseUrl = 'https://api.themoviedb.org/3';
 
 
