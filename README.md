@@ -88,57 +88,53 @@ A stack do projeto foi escolhida para ser moderna, eficiente e alinhada com as d
 
 ---
 
-## 🚀 Como Rodar o Projeto
+🚀 Como Rodar o Projeto
 
-> ⚠️ **Atenção:** É crucial configurar as variáveis de ambiente nos arquivos `.env` de ambos os projetos (frontend e backend) para que a aplicação funcione corretamente.
+⚠️ Atenção: Certifique-se de configurar corretamente as variáveis de ambiente nos arquivos .env do frontend e backend, ou a aplicação não irá funcionar.
 
-**1. Clone o Repositório**
-```bash
+1. Clone o Repositório
 git clone https://github.com/Bellapy/Filmverse.git
 cd Filmverse
-2. Backend
-code
-Bash
+
+🖥 Backend
 # Navegue até a pasta
 cd backend
 
 # Instale as dependências
 npm install
 
-# Crie o arquivo .env e configure as variáveis (veja a seção abaixo)
+# Crie o arquivo .env e configure as variáveis (veja abaixo)
 
 # Inicie o servidor
 npm run dev
-3. Frontend
-code
-Bash
-# Em um novo terminal, navegue até a pasta
+
+🌐 Frontend
+# Abra um novo terminal e navegue até a pasta
 cd frontend
 
 # Instale as dependências
 npm install
 
-# Crie o arquivo .env e configure as variáveis (veja a seção abaixo)
+# Crie o arquivo .env e configure as variáveis (veja abaixo)
 
-# Inicie a aplicação
+# Inicie o aplicativo
 npm run dev
-Acesse http://localhost:5173 no seu navegador.
 
+
+Após iniciar, acesse:
+
+👉 http://localhost:5173
 
 🔑 Variáveis de Ambiente
-Para rodar este projeto, você precisará criar dois arquivos .env:
 
-Na raiz de /backend:
-code
-Env
+Crie dois arquivos .env:
+
+📌 /backend/.env
 MONGODB_URI=SUA_STRING_DE_CONEXAO_DO_MONGODB_ATLAS
 
-Na raiz de /frontend:
-code
-Env
+📌 /frontend/.env
 VITE_TMDB_API_KEY=SUA_CHAVE_V3_DA_API_DO_TMDB
 
----
 
 ## 📡 Endpoints da API
 A API REST do backend segue os seguintes endpoints:
