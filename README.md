@@ -1,170 +1,162 @@
+<p align="center">
 
-# ⭐ FilmVerse – Uma plataforma de catálogo e avaliação de filmes
+  <img src="./.github/assets/banner.png" alt="Banner do FilmVerse" width="100%">
+</p>
 
-> Projeto Full Stack completo que simula uma plataforma de streaming, permitindo aos usuários descobrir, pesquisar e organizar filmes em uma lista pessoal. A aplicação consome a API pública do TMDB para dados de filmes e utiliza uma API REST própria, construída com Node.js e Express, para gerenciar os dados do usuário em um banco MongoDB.
+<h1 align="center">🎬 FilmVerse</h1>
+<p align="center">Uma plataforma de catálogo e avaliação de filmes, construída com a stack MERN e a API do TMDB.</p>
 
----
-
-### 🛡️ Badges
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-
----
-
-### 📖 Descrição Detalhada
-
-O FilmVerse foi criado para ser um projeto de portfólio robusto, demonstrando habilidades essenciais em desenvolvimento Full Stack. A aplicação resolve o problema de organizar e acompanhar filmes de interesse, oferecendo uma interface moderna e intuitiva inspirada nas grandes plataformas de streaming. O principal desafio foi integrar uma API externa (TMDB) com um sistema de CRUD próprio, criando uma experiência de usuário fluida e completa.
+<p align="center">
+  <img src="https://img.shields.io/badge/STATUS-CONCLUÍDO-green?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"/>
+  <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white"/>
+  <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge"/>
+</p>
 
 ---
 
-### 🎬 Demonstração
-
-**Acesse a demonstração ao vivo:** **[Link para o seu deploy do Vercel/Netlify]**
-
-
-#### 📸 Screenshots
-
-**Página Inicial (Home)**
-*Apresenta os filmes do momento em um banner rotativo e seções de descoberta por gênero.*
-
-![Página Inicial do FilmVerse](./.github/assets/home.png)
-
-**Página de Catálogo (com Scroll Infinito)**
-*Permite pesquisa por nome e filtro por gênero, carregando mais filmes conforme o usuário rola a página.*
-
-![Página de Catálogo do FilmVerse](./.github/assets/catalogo.png)
-
-**Página de Detalhes do Filme**
-*Exibe informações ricas como trailer, elenco, sinopse e filmes similares.*
-
-![Página de Detalhes do FilmVerse](./.github/assets/detalhes.png)
-
-**Página "Minha Lista" (com filtros e modo de visualização)**
-*Gerencie seus filmes salvos com filtros de status e alterne entre visualização em grid ou lista.*
-
-![Página Minha Lista do FilmVerse](./.github/assets/minha-lista.png)
+## 📌 Sumário
+- [📖 Sobre o Projeto](#-sobre-o-projeto)
+- [✨ Funcionalidades](#-funcionalidades)
+- [🎬 Demonstração](#-demonstração)
+- [🛠️ Tecnologias Utilizadas](#️-tecnologias-utilizadas)
+- [🚀 Como Rodar o Projeto](#-como-rodar-o-projeto)
+- [🔑 Variáveis de Ambiente](#-variáveis-de-ambiente)
+- [📡 Endpoints da API](#-endpoints-da-api)
+- [👩‍💻 Autora](#-autora)
 
 ---
 
-### ✨ Funcionalidades
+## 📖 Sobre o Projeto
+**FilmVerse** é um projeto Full Stack criado para ser um portfólio completo e robusto, demonstrando habilidades na criação de aplicações web modernas, desde o backend até o frontend. A plataforma permite aos usuários explorar um vasto catálogo de filmes, pesquisar, filtrar e gerenciar uma lista de favoritos pessoal, com uma interface inspirada nas grandes plataformas de streaming.
 
-- **🔍 Descoberta e Pesquisa:**
-  - Banner rotativo automático na Home.
-  - Pesquisa de filmes por título.
-  - Filtro de filmes por gênero.
-  - Scroll infinito para carregar mais resultados.
-- **⭐ Lista Pessoal (CRUD Completo):**
-  - Adicionar e remover filmes da lista pessoal.
-  - Marcar filmes como "Assistido" ou "Não Visto".
-- **🎬 UX Avançada:**
-  - Página de detalhes rica com trailer, elenco e recomendações.
-  - Modo de visualização em Grid ou Lista.
-  - Notificações toast para feedback de ações.
-  - Design totalmente responsivo (mobile-first).
+O principal objetivo foi construir um sistema completo, integrando uma API externa de grande volume de dados (TMDB) com uma API REST própria para persistência de dados do usuário, focando em boas práticas de código, organização e uma experiência de usuário rica e intuitiva.
 
 ---
 
-### 🛠️ Tecnologias Utilizadas
+## ✨ Funcionalidades
+- **Navegação e Descoberta:**
+  - 🎞️ **Home Dinâmica:** Banner principal rotativo e automático com filmes populares.
+  - 🧭 **Exploração por Gênero:** Seção visual para descobrir filmes por categoria.
+  - 🔭 **Catálogo Completo:** Página dedicada com pesquisa por título e filtros por gênero.
+  - 🔄 **Scroll Infinito:** Carregamento de mais filmes sob demanda conforme o usuário rola a página.
+  - ℹ️ **Página de Detalhes Rica:** Informações completas com trailer, elenco, sinopse e filmes similares.
 
-- **Frontend:**
-  - `React.js`
-  - `React Router`
-  - `Tailwind CSS`
-  - `Axios`
-  - `Lucide React` (Ícones)
-  - `React Hot Toast` (Notificações)
+- **Gerenciamento de Lista Pessoal (CRUD):**
+  - ✅ **Adicionar e Remover** filmes da lista pessoal.
+  - 👀 **Marcar filmes** como "Assistido" ou "Não Visto".
+  - 🗂️ **Filtros de Status** na lista pessoal.
+  - 📱 **Modo de Visualização** em Grid ou Lista.
 
-- **Backend:**
-  - `Node.js`
-  - `Express`
-  - `MongoDB` com `Mongoose`
-  - `CORS`
-  - `Dotenv`
-
-- **APIs:**
-  - `The Movie Database (TMDB)`
+- **Experiência do Usuário (UX):**
+  - 💅 **Notificações Modernas:** Feedback visual para todas as ações do usuário com `react-hot-toast`.
+  - 🎨 **Design Responsivo:** Interface totalmente adaptável para desktop, tablets e celulares.
 
 ---
 
-### 🚀 Como Rodar o Projeto
+## 🎬 Demonstração
 
-Siga os passos abaixo para executar o projeto localmente:
 
-**1. Clone o repositório:**
+### Deploy
+<p align="center">
+  <a href="https://filmverse-amber.vercel.app/">
+    <img src="https://img.shields.io/badge/VER%20AO%20VIVO-000?style=for-the-badge&logo=vercel&logoColor=white" alt="Ver ao vivo na Vercel"/>
+  </a>
+</p>
+
+### Screenshots
+<p align="center">
+  <img src="./.github/assets/home.png" width="49%" alt="Print da Home Page"/>
+  <img src="./.github/assets/detalhes.png" width="49%" alt="Print da Página de Detalhes"/>
+  <br>
+  <img src="./.github/assets/catalogo.png" width="49%" alt="Print da Página de Catálogo"/>
+  <img src="./.github/assets/minha-lista.png" width="49%" alt="Print da Página Minha Lista"/>
+</p>
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+A stack do projeto foi escolhida para ser moderna, eficiente e alinhada com as demandas do mercado.
+
+| Frontend | Backend | Banco de Dados |
+|----------|---------|----------------|
+| React.js | Node.js | MongoDB        |
+| React Router | Express | Mongoose       |
+| Tailwind CSS | CORS |                |
+| Axios | Dotenv |                |
+| React Hot Toast | | |
+| Lucide React Icons | | |
+
+---
+
+## 🚀 Como Rodar o Projeto
+
+> ⚠️ **Atenção:** É crucial configurar as variáveis de ambiente nos arquivos `.env` de ambos os projetos (frontend e backend) para que a aplicação funcione corretamente.
+
+**1. Clone o Repositório**
 ```bash
-git clone https://github.com/[SEU-USUARIO]/filmverse.git
-cd filmverse
-
-2. Configure e rode o Backend:
-
+git clone https://github.com/Bellapy/Filmverse.git
+cd Filmverse
+2. Backend
+code
 Bash
+# Navegue até a pasta
 cd backend
+
+# Instale as dependências
 npm install
-Crie um arquivo .env na raiz da pasta backend e adicione:
 
-Env
-PORT=5000
-MONGODB_URI=SUA_STRING_DE_CONEXAO_DO_MONGODB_ATLAS
-Para iniciar o servidor, rode:
+# Crie o arquivo .env e configure as variáveis (veja a seção abaixo)
 
-Bash
+# Inicie o servidor
 npm run dev
-3. Configure e rode o Frontend:
-
+3. Frontend
+code
 Bash
-# Em um novo terminal
+# Em um novo terminal, navegue até a pasta
 cd frontend
+
+# Instale as dependências
 npm install
-Crie um arquivo .env na raiz da pasta frontend e adicione:
 
-Env
-VITE_TMDB_API_KEY=SUA_CHAVE_V3_DA_API_DO_TMDB
-Para iniciar a aplicação, rode:
+# Crie o arquivo .env e configure as variáveis (veja a seção abaixo)
 
-Bash
+# Inicie a aplicação
 npm run dev
 Acesse http://localhost:5173 no seu navegador.
 
 
-📁 Estrutura do Projeto
+🔑 Variáveis de Ambiente
+Para rodar este projeto, você precisará criar dois arquivos .env:
 
-filmverse/
-├── backend/
-│   ├── src/
-│   │   ├── controllers/
-│   │   ├── models/
-│   │   ├── routes/
-│   │   ├── db.js
-│   │   └── server.js
-│   └── .env
-│   └── package.json
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   └── .env
-│   └── package.json
-└── README.md
+Na raiz de /backend:
+code
+Env
+MONGODB_URI=SUA_STRING_DE_CONEXAO_DO_MONGODB_ATLAS
 
-🔑 Variáveis de Ambiente (.env)
-O projeto requer as seguintes variáveis de ambiente para funcionar:
-Backend (/backend/.env):
-MONGODB_URI: A string de conexão com seu cluster do MongoDB Atlas.
-Frontend (/frontend/.env):
-VITE_TMDB_API_KEY: Sua chave de API (v3) do The Movie Database.
-📡 Documentação da API (Backend)
+Na raiz de /frontend:
+code
+Env
+VITE_TMDB_API_KEY=SUA_CHAVE_V3_DA_API_DO_TMDB
+
+---
+
+📡 Endpoints da API
+A API REST do backend segue os seguintes endpoints:
+
 Método	Endpoint	Descrição
 GET	/api/movies	Lista todos os filmes da lista pessoal.
 POST	/api/movies	Adiciona um novo filme à lista.
-DELETE	/api/movies/:id	Remove um filme da lista pelo seu ID.
 PATCH	/api/movies/:id	Atualiza o status "assistido" de um filme.
+DELETE	/api/movies/:id	Remove um filme da lista pelo seu ID.
 
-👨‍💻 Autor
+---
+
+👩‍💻 Autora
 Isabella Dreher Emerichs Da Rosa
-LinkedIn: [Link para o seu LinkedIn]
-GitHub: [Link para o seu GitHub]
+Apaixonada por desenvolvimento Frontend, UI/UX e tecnologia. 
+![alt text](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)
+
+![alt text](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+<p align="center">✨ Obrigada por acessar o Filmverse✨</p>
