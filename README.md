@@ -1,5 +1,4 @@
 <p align="center">
-
   <img src="./.github/assets/banner.png" alt="Banner do FilmVerse" width="100%">
 </p>
 
@@ -7,6 +6,7 @@
 <p align="center">Uma plataforma de catálogo e avaliação de filmes, construída com a stack MERN e a API do TMDB.</p>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/STATUS-CONCLUÍDO-green?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"/>
   <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white"/>
@@ -55,7 +55,6 @@ O principal objetivo foi construir um sistema completo, integrando uma API exter
 
 ## 🎬 Demonstração
 
-
 ### Deploy
 <p align="center">
   <a href="https://filmverse-amber.vercel.app/">
@@ -80,7 +79,7 @@ A stack do projeto foi escolhida para ser moderna, eficiente e alinhada com as d
 | Frontend | Backend | Banco de Dados |
 |----------|---------|----------------|
 | React.js | Node.js | MongoDB        |
-| React Router | Express | Mongoose       |
+| React Router | Express | Mongoose   |
 | Tailwind CSS | CORS |                |
 | Axios | Dotenv |                |
 | React Hot Toast | | |
@@ -88,15 +87,17 @@ A stack do projeto foi escolhida para ser moderna, eficiente e alinhada com as d
 
 ---
 
-🚀 Como Rodar o Projeto
+## 🚀 Como Rodar o Projeto
 
-⚠️ Atenção: Certifique-se de configurar corretamente as variáveis de ambiente nos arquivos .env do frontend e backend, ou a aplicação não irá funcionar.
+⚠️ Atenção: É crucial configurar as variáveis de ambiente nos arquivos `.env` de ambos os projetos (frontend e backend) para que a aplicação funcione corretamente.
 
-1. Clone o Repositório
+### 1. Clone o Repositório
+```bash
 git clone https://github.com/Bellapy/Filmverse.git
 cd Filmverse
-
 🖥 Backend
+bash
+Copiar código
 # Navegue até a pasta
 cd backend
 
@@ -107,9 +108,10 @@ npm install
 
 # Inicie o servidor
 npm run dev
-
 🌐 Frontend
-# Abra um novo terminal e navegue até a pasta
+bash
+Copiar código
+# Em um novo terminal, navegue até a pasta
 cd frontend
 
 # Instale as dependências
@@ -119,43 +121,37 @@ npm install
 
 # Inicie o aplicativo
 npm run dev
-
-
 Após iniciar, acesse:
 
 👉 http://localhost:5173
 
 🔑 Variáveis de Ambiente
-
 Crie dois arquivos .env:
 
 📌 /backend/.env
+
+ini
+Copiar código
 MONGODB_URI=SUA_STRING_DE_CONEXAO_DO_MONGODB_ATLAS
-
 📌 /frontend/.env
+
+ini
+Copiar código
 VITE_TMDB_API_KEY=SUA_CHAVE_V3_DA_API_DO_TMDB
-
-
-## 📡 Endpoints da API
+📡 Endpoints da API
 A API REST do backend segue os seguintes endpoints:
 
-| Método | Endpoint         | Descrição                            |
-|--------|------------------|----------------------------------------|
-| `GET`    | `/api/movies`    | Lista todos os filmes da lista pessoal.|
-| `POST`   | `/api/movies`    | Adiciona um novo filme à lista.        |
-| `PATCH`  | `/api/movies/:id`| Atualiza o status "assistido" de um filme. |
-| `DELETE` | `/api/movies/:id`| Remove um filme da lista pelo seu ID.  |
+Método	Endpoint	Descrição
+GET	/api/movies	Lista todos os filmes da lista pessoal.
+POST	/api/movies	Adiciona um novo filme à lista.
+PATCH	/api/movies/:id	Atualiza o status "assistido" de um filme.
+DELETE	/api/movies/:id	Remove um filme da lista pelo seu ID.
 
----
-
-## 👩‍💻 Autora
-
-**Isabella Dreher Emerichs Da Rosa**
-
+👩‍💻 Autora
+Isabella Dreher Emerichs Da Rosa
 Apaixonada por desenvolvimento Frontend, UI/UX e tecnologia. Em busca da minha primeira oportunidade para aplicar e expandir meus conhecimentos.
 
-<!-- Lembre-se de colocar o link do seu perfil do LinkedIn aqui dentro do parênteses -->
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)]([https://www.linkedin.com/in/isabella-dreher-0254ab359/])
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Bellapy)
 
-<p align="center">✨ Feito com ❤️ e muito código! ✨</p>
+
+
+<p align="center">✨ Feito com ❤️ e muito código! ✨</p> ```
