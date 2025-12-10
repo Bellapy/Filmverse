@@ -7,11 +7,9 @@
 <p align="center">Uma plataforma de catálogo e avaliação de filmes, construída com a stack MERN e a API do TMDB.</p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/STATUS-CONCLUÍDO-green?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"/>
   <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white"/>
-  <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge"/>
 </p>
 
 ---
