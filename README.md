@@ -138,20 +138,20 @@ MONGODB_URI=SUA_STRING_DE_CONEXAO_DO_MONGODB_ATLAS
 ini
 Copiar código
 VITE_TMDB_API_KEY=SUA_CHAVE_V3_DA_API_DO_TMDB
+
+```
 📡 Endpoints da API
 A API REST do backend segue os seguintes endpoints:
 
 Método	Endpoint	Descrição
-GET	/api/movies	Lista todos os filmes da lista pessoal.
-POST	/api/movies	Adiciona um novo filme à lista.
-PATCH	/api/movies/:id	Atualiza o status "assistido" de um filme.
-DELETE	/api/movies/:id	Remove um filme da lista pelo seu ID.
+- GET	/api/movies	Lista todos os filmes da lista pessoal.
+- POST	/api/movies	Adiciona um novo filme à lista.
+- PATCH	/api/movies/:id	Atualiza o status "assistido" de um filme.
+- DELETE	/api/movies/:id	Remove um filme da lista pelo seu ID.
 
 👩‍💻 Autora
 Isabella Dreher Emerichs Da Rosa
-Apaixonada por desenvolvimento Frontend, UI/UX e tecnologia. Em busca da minha primeira oportunidade para aplicar e expandir meus conhecimentos.
+Apaixonada por desenvolvimento Frontend, UI/UX e tecnologia.
 
 
-
-
-<p align="center">✨ Feito com ❤️ e muito código! ✨</p> ```
+<p align="center">✨ Feito com ❤️ e muito código! ✨</p> 
