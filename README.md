@@ -142,21 +142,26 @@ VITE_TMDB_API_KEY=SUA_CHAVE_V3_DA_API_DO_TMDB
 
 ---
 
-📡 Endpoints da API
+## 📡 Endpoints da API
 A API REST do backend segue os seguintes endpoints:
 
-Método	Endpoint	Descrição
-GET	/api/movies	Lista todos os filmes da lista pessoal.
-POST	/api/movies	Adiciona um novo filme à lista.
-PATCH	/api/movies/:id	Atualiza o status "assistido" de um filme.
-DELETE	/api/movies/:id	Remove um filme da lista pelo seu ID.
+| Método | Endpoint         | Descrição                            |
+|--------|------------------|----------------------------------------|
+| `GET`    | `/api/movies`    | Lista todos os filmes da lista pessoal.|
+| `POST`   | `/api/movies`    | Adiciona um novo filme à lista.        |
+| `PATCH`  | `/api/movies/:id`| Atualiza o status "assistido" de um filme. |
+| `DELETE` | `/api/movies/:id`| Remove um filme da lista pelo seu ID.  |
 
 ---
 
-👩‍💻 Autora
-Isabella Dreher Emerichs Da Rosa
-Apaixonada por desenvolvimento Frontend, UI/UX e tecnologia. 
-![alt text](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)
+## 👩‍💻 Autora
 
-![alt text](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
-<p align="center">✨ Obrigada por acessar o Filmverse✨</p>
+**Isabella Dreher Emerichs Da Rosa**
+
+Apaixonada por desenvolvimento Frontend, UI/UX e tecnologia. Em busca da minha primeira oportunidade para aplicar e expandir meus conhecimentos.
+
+<!-- Lembre-se de colocar o link do seu perfil do LinkedIn aqui dentro do parênteses -->
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)]([https://www.linkedin.com/in/isabella-dreher-0254ab359/])
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Bellapy)
+
+<p align="center">✨ Feito com ❤️ e muito código! ✨</p>
