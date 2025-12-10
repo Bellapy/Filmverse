@@ -3,7 +3,7 @@ import { Toaster } from 'react-hot-toast';
 
 
 import Navbar from './components/Navbar';
-import Footer from './components/footer';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import Movies from './pages/Movies';
 import MyList from './pages/MyList';

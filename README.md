@@ -23,25 +23,27 @@ O FilmVerse foi criado para ser um projeto de portfólio robusto, demonstrando h
 
 **Acesse a demonstração ao vivo:** **[Link para o seu deploy do Vercel/Netlify]**
 
-#### 🎞️ GIF da Aplicação em Uso
-![Demonstração do FilmVerse](./.github/assets/demo.gif)
 
 #### 📸 Screenshots
 
 **Página Inicial (Home)**
 *Apresenta os filmes do momento em um banner rotativo e seções de descoberta por gênero.*
+
 ![Página Inicial do FilmVerse](./.github/assets/home.png)
 
 **Página de Catálogo (com Scroll Infinito)**
 *Permite pesquisa por nome e filtro por gênero, carregando mais filmes conforme o usuário rola a página.*
+
 ![Página de Catálogo do FilmVerse](./.github/assets/catalogo.png)
 
 **Página de Detalhes do Filme**
 *Exibe informações ricas como trailer, elenco, sinopse e filmes similares.*
+
 ![Página de Detalhes do FilmVerse](./.github/assets/detalhes.png)
 
 **Página "Minha Lista" (com filtros e modo de visualização)**
 *Gerencie seus filmes salvos com filtros de status e alterne entre visualização em grid ou lista.*
+
 ![Página Minha Lista do FilmVerse](./.github/assets/minha-lista.png)
 
 ---
